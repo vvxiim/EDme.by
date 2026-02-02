@@ -14,12 +14,30 @@
     <h2>Регистрация участника</h2>
     <p class="subtitle">Введите ваши данные для продолжения</p>
 
+    
     <form id="refForm">
         <label for="fio">ФИО</label>
         <input type="text" id="fio" name="fio" required>
 
         <label for="username">Username (Instagram/Telegram)</label>
         <input type="text" id="username" name="username" required>
+        <label for="subject">Предмет для репетиторства</label>
+        <select id="subject" name="subject" required>
+            <option value="" disabled selected>Выберите предмет</option>
+            <option value="Математика">Математика</option>
+            <option value="Физика">Физика</option>
+            <option value="Русский язык">Русский язык</option>
+            <option value="Белорусский язык">Белорусский язык</option>
+            <option value="Английский язык">Английский язык</option>
+            <option value="Немецкий язык">Немецкий язык</option>
+            <option value="Китайский язык">Китайский язык</option>
+            <option value="Химия">Химия</option>
+            <option value="Биология">Биология</option>
+            <option value="История">История</option>
+            <option value="Обществоведение">Обществоведение</option>
+            <option value="Младшая школа">Младшая школа</option>
+        </select>
+
 
         <button type="submit" class="btn">Продолжить</button>
     </form>
@@ -28,3 +46,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
