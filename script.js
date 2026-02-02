@@ -1,7 +1,7 @@
 document.getElementById("refForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbw48PAqURtO4VUL5SXt6g5dSBTpd0WAMAdybsLLlhkvzVn58CxAijDtykO2BgA2yg/exec";
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbyPQgTNjbJKUcqjTq-FpEL1YfYgrIzxSKzELaXEl6WIuedFk4hEcBGZcfBR7qGYTCc/exec";
     
     // Собираем данные
     const fio = document.getElementById("fio").value;
@@ -30,6 +30,7 @@ document.getElementById("refForm").addEventListener("submit", async function(e) 
         window.location.href = "https://b24-kn381m.b24site.online/crm_form_iemti/";
     }
 });
+
 
 
 
