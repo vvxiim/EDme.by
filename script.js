@@ -6,13 +6,13 @@ document.getElementById("refForm").addEventListener("submit", async function(e) 
     // Собираем данные
     const fio = document.getElementById("fio").value;
     const username = document.getElementById("username").value;
-    
+    const subject = document.getElementById("subject").value;
     try {
         // Отправляем данные через FormData (лучше работает с GAS)
         const formData = new FormData();
         formData.append('fio', fio);
         formData.append('username', username);
-        
+        formData.append('subject', subject);
         // Отправляем запрос с обработкой CORS
         const response = await fetch(GAS_URL, {
             method: 'POST',
@@ -30,6 +30,7 @@ document.getElementById("refForm").addEventListener("submit", async function(e) 
         window.location.href = "https://b24-kn381m.b24site.online/crm_form_iemti/";
     }
 });
+
 
 
 
