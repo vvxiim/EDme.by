@@ -3,7 +3,7 @@ document.getElementById("refForm").addEventListener("submit", function(e) {
     
     const GAS_URL = "https://script.google.com/macros/s/AKfycbz5WNGjLIU5a2UpubvQBgSw47MDJIpYKBXS7cnaI3apvnJRGjFDFqTGMJDIZhFJYEQ/exec";
     
-    // Получаем и кодируем значения
+    // Получаем значения
     const fio = document.getElementById("fio").value.trim();
     const username = document.getElementById("username").value.trim();
     const subject = document.getElementById("subject").value;
@@ -14,32 +14,35 @@ document.getElementById("refForm").addEventListener("submit", function(e) {
         return;
     }
     
-    // Кодируем для URL
-    const encodedFio = encodeURIComponent(fio);
-    const encodedUsername = encodeURIComponent(username);
-    const encodedSubject = encodeURIComponent(subject);
+    // Создаем URL с параметрами
+    const url = GAS_URL + 
+                "?fio=" + encodeURIComponent(fio) + 
+                "&username=" + encodeURIComponent(username) + 
+                "&subject=" + encodeURIComponent(subject) + 
+                "&t=" + Date.now();
     
-    console.log("Отправка данных:", fio, username, subject);
+    console.log("Отправка запроса:", url);
     
-    // Вариант 1: Используем fetch для большей надежности
-    const url = `${GAS_URL}?fio=${encodedFio}&username=${encodedUsername}&subject=${encodedSubject}&time=${Date.now()}`;
+    // Создаем скрытый iframe
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = '0';
+    iframe.style.position = 'absolute';
+    iframe.style.left = '-9999px';
+    iframe.src = url;
     
-    fetch(url, {
-        method: 'GET',
-        mode: 'no-cors'
-    })
-    .then(() => {
-        console.log("Данные отправлены успешно");
-    })
-    .catch(err => {
-        console.log("Ошибка отправки:", err);
-    })
-    .finally(() => {
-        // Все равно делаем редирект
-        console.log("Редирект на Битрикс...");
+    // Добавляем iframe на страницу
+    document.body.appendChild(iframe);
+    
+    // Сразу делаем редирект - не ждем загрузки iframe
+    console.log("Редирект на Битрикс...");
+    setTimeout(() => {
         window.location.href = "https://b24-kn381m.b24site.online/crm_form_iemti/";
-    });
+    }, 100);
 });
+
 
 
 
