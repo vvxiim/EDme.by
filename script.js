@@ -5,10 +5,10 @@ document.getElementById("refForm").addEventListener("submit", function(e) {
 
     const fio = document.getElementById("fio").value.trim();
     const username = document.getElementById("username").value.trim();
-    const study = document.getElementById("study").value.trim();     // ← НОВОЕ ПОЛЕ
+    const study = document.getElementById("study").value.trim();
     const subject = document.getElementById("subject").value;
 
-    if (!fio || !username || !subject || !study) {
+    if (!fio || !username || !study || !subject) {
         alert("Пожалуйста, заполните все поля!");
         return;
     }
@@ -17,24 +17,22 @@ document.getElementById("refForm").addEventListener("submit", function(e) {
         GAS_URL +
         "?fio=" + encodeURIComponent(fio) +
         "&username=" + encodeURIComponent(username) +
-        "&subject=" + encodeURIComponent(subject) +
         "&study=" + encodeURIComponent(study) +
+        "&subject=" + encodeURIComponent(subject) +
         "&t=" + Date.now();
 
     console.log("Отправка запроса:", url);
 
-    // Создаём iframe
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = url;
+    // Отправляем запрос fetch — он НЕ блокируется браузерами
+    fetch(url, { mode: "no-cors" })
+        .catch(err => console.error("Ошибка отправки:", err));
 
-    document.body.appendChild(iframe);
-
-    // ЖДЁМ 400 мс — iframe гарантированно успевает обратиться к Google Script
+    // Даем запросу 200 мс — fetch уже успевает отправить его
     setTimeout(() => {
         window.location.href = "https://b24-kn381m.b24site.online/crm_form_iemti/";
-    }, 400);
+    }, 200);
 });
+
 
 
 
