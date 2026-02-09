@@ -21,42 +21,14 @@ document.getElementById("refForm").addEventListener("submit", function(e) {
         "&subject=" + encodeURIComponent(subject) +
         "&t=" + Date.now();
 
-    console.log("Отправка запроса:", url);
+    console.log("Отправка:", url);
 
-    // Отправляем запрос fetch — он НЕ блокируется браузерами
-    fetch(url, { mode: "no-cors" })
-        .catch(err => console.error("Ошибка отправки:", err));
+    // *надежнейший способ* — загрузка через src картинки
+    const img = new Image();
+    img.src = url;
 
-    // Даем запросу 200 мс — fetch уже успевает отправить его
+    // Через 250 мс можно переходить — запрос уже ушёл
     setTimeout(() => {
         window.location.href = "https://b24-kn381m.b24site.online/crm_form_iemti/";
-    }, 200);
+    }, 250);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
