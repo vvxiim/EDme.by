@@ -1,7 +1,7 @@
 document.getElementById("refForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbylaftEQcaJRstywEzP4oEXr3oIy-NJ9ooObL1YV9-thNE9izGzNMawT249-YdjetY/exec";
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbz-cTi58uOaeBE0B_BzeShqbnfKGfYs2rWSh-6WrHhJvHjdQhk5_Z62j7wemc7tqdw/exec";
 
     const fio = document.getElementById("fio").value.trim();
     const username = document.getElementById("username").value.trim();
@@ -32,3 +32,4 @@ document.getElementById("refForm").addEventListener("submit", function(e) {
         window.location.href = "https://b24-kn381m.b24site.online/crm_form_iemti/";
     }, 250);
 });
+
